@@ -8,7 +8,8 @@
 echo "The installation of the Bitrix environment started. This may take some time..."
 
 # Производим устровку VMBitrix
-sudo ./bitrix-env.sh -s -p -H bitrix -M 'mysql'
+# Ключи: -s – Тихий режим установки; -p – Создать пул после установки окружения; -H – Имя хоста; -M – Пароль root для MySQL
+sudo ./bitrix-env.sh -s -p -H bitrix -M 'root'
 
 # Включаем phar-файлы
 sudo cp /etc/php.d/20-phar.ini.disabled /etc/php.d/20-phar.ini
@@ -28,6 +29,7 @@ sudo sed -i 's/;mbstring.func_overload = 0/mbstring.func_overload = 2/' /etc/php
 service httpd restart
 
 # Задаем пароль для MySQL иначе не получается подключиться к БД во установки Битрикс 
-mysql -uroot -p -e 'SET PASSWORD FOR "root"@"localhost" = PASSWORD("root"); FLUSH PRIVILEGES;'
+# mysql -uroot -p -e 'SET PASSWORD FOR "root"@"localhost" = PASSWORD("root"); FLUSH PRIVILEGES;'
+# mysql -uroot -e 'SET PASSWORD FOR "root"@"localhost" = PASSWORD("root"); FLUSH PRIVILEGES;'
 # Перезагружаем MySQL
 service mysqld restart
