@@ -20,5 +20,6 @@ sudo chmod +x bitrix-env.sh
 # Выключаем дерективу SElinux
 sudo sed -i 's/enforcing/disabled/g' /etc/selinux/config /etc/selinux/config
 
+
 echo "Virtual machine will reboot"
 
